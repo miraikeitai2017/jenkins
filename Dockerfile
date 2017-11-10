@@ -13,9 +13,16 @@ RUN apt-get install -y jenkins
 RUN apt-get install -y sysv-rc-conf
 RUN sysv-rc-conf jenkins on
 
+# install for latex
+RUN apt-get update -y
+RUN apt-get upgrade -y
+RUN apt-get install -y software-properties-common python-software-properties
+RUN apt-add-repository -y ppa:texlive-backports/ppa
+RUN apt-get install -y texlive-lang-cjk
+
 EXPOSE 8080
 
-ENTRYPOINT service jenkins start &&\
-    sleep 5 &&\
-    tail -f /var/log/jenkins/jenkins.log
+ENTRYPOINT service jenkins start \
+    && sleep 5 \
+    && tail -f /var/log/jenkins/jenkins.log
 
