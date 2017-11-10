@@ -29,6 +29,7 @@ RUN apt-get install -y build-essential libpq-dev nodejs
 RUN apt-get install -y nodejs-legacy
 RUN apt-get install -y npm
 
+COPY jenkins /etc/default/jenkins
 EXPOSE 8080
 
 ENTRYPOINT service jenkins start \
