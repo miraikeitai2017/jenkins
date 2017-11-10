@@ -20,6 +20,15 @@ RUN apt-get install -y software-properties-common python-software-properties
 RUN apt-add-repository -y ppa:texlive-backports/ppa
 RUN apt-get install -y texlive-lang-cjk
 
+# install for rails
+RUN apt-get install -y git curl
+RUN apt-get install -y build-essential libssl-dev rbenv ruby-build
+RUN echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+RUN apt-get install -y libffi-dev
+RUN apt-get install -y build-essential libpq-dev nodejs
+RUN apt-get install -y nodejs-legacy
+RUN apt-get install -y npm
+
 EXPOSE 8080
 
 ENTRYPOINT service jenkins start \
