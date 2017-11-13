@@ -4,6 +4,6 @@ services:
         restart: always
         build: .
         volumes:
-            - "./data/jenkins_home:/var/lib/jenkins"
+            - "./data/jenkins:/var/lib/jenkins"
         ports:
             - "8080:8080"
